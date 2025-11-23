@@ -1,0 +1,4 @@
+colorama==0.4.6
+pywin32==311
+setuptools==80.9.0
+WMI==1.5.1
