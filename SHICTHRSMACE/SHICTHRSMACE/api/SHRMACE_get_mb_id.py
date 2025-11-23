@@ -1,10 +1,12 @@
 
 import wmi
+import pythoncom
 import copy
 from ..SHRMACE_ErrorBase import SHRMACEException
 
 def get_mb_id(var) -> None:
     try:
+        pythoncom.CoInitialize()
         c = wmi.WMI()
         MB_ID = ''
         for board_id in c.Win32_BaseBoard():
@@ -12,3 +14,5 @@ def get_mb_id(var) -> None:
         var.SHRMACEResult['MotherBoardID'] = copy.deepcopy(MB_ID.strip().upper())
     except Exception as e:
         raise SHRMACEException(f'SHRMACEException [ERROR.2006] unable to get MotherBoard id. | {str(e)}')
+    finally:
+        pythoncom.CoUninitialize()

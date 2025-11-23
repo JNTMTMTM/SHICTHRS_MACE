@@ -17,6 +17,6 @@ print('|  \033[1mCopyright : © 2025-2026 SHICTHRS, Std. All rights reserved.\03
 
 def SHRMACE_get_mace_info() -> dict:
     try:
-        print(SHRMACE_mace_info_dispatcher())
+        return SHRMACE_mace_info_dispatcher()
     except Exception as e:
         raise SHRMACEException(f'SHRMACEException [ERROR.2014] error occurred while getting mace info. | {e}')

@@ -1,9 +1,11 @@
 
 import wmi
+import pythoncom
 from ..SHRMACE_ErrorBase import SHRMACEException
 
 def get_cpu_vendor(var) -> None:
     try:
+        pythoncom.CoInitialize()
         c = wmi.WMI()
         for processor in c.Win32_Processor():
             name = processor.Name.lower()
@@ -14,3 +16,5 @@ def get_cpu_vendor(var) -> None:
                 var.SHRMACEResult['CPUVendor'] = 'amd'
     except Exception as e:
         raise SHRMACEException(f'SHRMACEException [ERROR.2004] unable to get CPU vendor. | {str(e)}')
+    finally:
+        pythoncom.CoUninitialize()
