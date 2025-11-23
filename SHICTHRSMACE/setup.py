@@ -9,5 +9,5 @@ setup(name='SHICTHRSMACE',
       license='GPL-3.0',
       packages=find_packages(),
       include_package_data=True,
-      install_requires=['colorama==0.4.6'],
+      install_requires=['colorama==0.4.6' , 'pywin32==311' , 'WMI==1.5.1'],
       zip_safe=False)

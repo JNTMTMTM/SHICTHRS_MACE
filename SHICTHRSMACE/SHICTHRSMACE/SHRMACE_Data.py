@@ -1,2 +1,5 @@
 
-from SHRMACE_ErrorBase import SHRJMACEException
+from .SHRMACE_ErrorBase import SHRMACEException
+
+SHRMACEResult : dict = {'WindowsUUID' : None ,
+                        '' : None}

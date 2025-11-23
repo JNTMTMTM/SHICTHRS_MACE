@@ -1,5 +1,5 @@
 
-class SHRJMACEException(BaseException):
+class SHRMACEException(BaseException):
     def __init__(self , message: str) -> None:
         self.message = message
     
