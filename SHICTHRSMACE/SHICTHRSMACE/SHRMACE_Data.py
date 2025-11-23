@@ -1,15 +1,17 @@
 
-SHRMACEResult : dict = {'WindowsUUID' : None ,
-                            'WindowsProductId' : None ,
-                            'CPUINFO' : None ,
-                            'CPUID' : None ,
-                            'CPUVendor' : None ,
-                            'MotherBoardINFO' : None ,
-                            'MotherBoardID' : None ,
-                            'GPUINFO' : None ,
-                            'GPUID' : None ,
-                            'DiskINFO' : None ,
-                            'DiskID' : None ,
-                            'MemeroyINFO' : None ,
-                            'MACAddress' : None ,
-                        }
+class SHRMACEData():
+    def __init__(self):
+        self.SHRMACEResult : dict = {'WindowsUUID' : None ,
+                                    'WindowsProductId' : None ,
+                                    'CPUINFO' : None ,
+                                    'CPUID' : None ,
+                                    'CPUVendor' : None ,
+                                    'MotherBoardINFO' : None ,
+                                    'MotherBoardID' : None ,
+                                    'GPUINFO' : None ,
+                                    'GPUID' : None ,
+                                    'DiskINFO' : None ,
+                                    'DiskID' : None ,
+                                    'MemeroyINFO' : None ,
+                                    'MACAddress' : None ,
+                                }

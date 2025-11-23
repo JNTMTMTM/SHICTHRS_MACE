@@ -1,13 +1,16 @@
 
 import wmi
 import copy
-from ..SHRMACE_Data import SHRMACEResult
+import pythoncom
 from ..SHRMACE_ErrorBase import SHRMACEException
 
-def get_uuid() -> None:
+def get_uuid(var) -> None:
     try:
+        pythoncom.CoInitialize()
         c = wmi.WMI()
         for system in c.Win32_ComputerSystemProduct():
-            SHRMACEResult['WindowsUUID'] = copy.deepcopy(system.UUID)
-    except:
-        raise SHRMACEException('SHRMACEException [ERROR.2000] unable to get uuid.')
+            var.SHRMACEResult['WindowsUUID'] = copy.deepcopy(system.UUID)
+    except Exception as e:
+        raise SHRMACEException(f'SHRMACEException [ERROR.2000] unable to get uuid. | {str(e)}')
+    finally:
+        pythoncom.CoUninitialize()

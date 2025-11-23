@@ -7,10 +7,9 @@ sys.coinit_flags = 0
 
 import pythoncom
 import copy
-from ..SHRMACE_Data import SHRMACEResult
 from ..SHRMACE_ErrorBase import SHRMACEException
 
-def get_disk_info() -> None:
+def get_disk_info(var) -> None:
     pythoncom.CoInitialize()
     result = []
     try:
@@ -26,7 +25,7 @@ def get_disk_info() -> None:
                     "DISK_PARTITION" : []
                 }
             except Exception as e:
-                raise SHRMACEException(f'SHRMACEException [ERROR.2009.0] error occurred while getting disk info. | {e}')
+                raise SHRMACEException(f'SHRMACEException [ERROR.2009.0] error occurred while getting disk info. | {str(e)}')
             
             try:
                 for partition in physical_disk.associators("Win32_DiskDriveToDiskPartition"):
@@ -41,12 +40,12 @@ def get_disk_info() -> None:
                         disk_info["DISK_PARTITION"].append(partition_info)
                 
                 result.append(disk_info)
-                SHRMACEResult['DiskINFO'] = copy.deepcopy(result)
+                var.SHRMACEResult['DiskINFO'] = copy.deepcopy(result)
             except Exception as e:
-                raise SHRMACEException(f'SHRMACEException [ERROR.2009.1] error occurred while getting disk DISK_PARTITION info. | {e}')
+                raise SHRMACEException(f'SHRMACEException [ERROR.2009.1] error occurred while getting disk DISK_PARTITION info. | {str(e)}')
     
-    except:
-        raise SHRMACEException('SHRMACEException [ERROR.2009] unable to get disk info.')
+    except Exception as e:
+        raise SHRMACEException(f'SHRMACEException [ERROR.2009] unable to get disk info. | {str(e)}')
 
     finally:
         pythoncom.CoUninitialize()

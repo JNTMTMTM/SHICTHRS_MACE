@@ -1,12 +1,11 @@
 
 import subprocess
 import copy
-from ..SHRMACE_Data import SHRMACEResult
 from ..SHRMACE_ErrorBase import SHRMACEException
 
 MEM_INFO_COMMAND : str = 'wmic memorychip get Manufacturer, PartNumber, SerialNumber, Capacity, Speed, DeviceLocator, MemoryType, FormFactor'
 
-def get_mem_info() -> None:
+def get_mem_info(var) -> None:
     try:
         output = subprocess.check_output(
             MEM_INFO_COMMAND, 
@@ -30,7 +29,7 @@ def get_mem_info() -> None:
             module_info = dict(zip(headers, values))
             modules.append(module_info)
         
-        SHRMACEResult['MemeroyINFO'] = copy.deepcopy(modules)
+        var.SHRMACEResult['MemeroyINFO'] = copy.deepcopy(modules)
 
-    except:
-        raise SHRMACEException('SHRMACEException [ERROR.2011] unable to get memory info.')
+    except Exception as e:
+        raise SHRMACEException(f'SHRMACEException [ERROR.2011] unable to get memory info. | {str(e)}')

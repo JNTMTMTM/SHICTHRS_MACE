@@ -1,15 +1,18 @@
 
 import wmi
 import copy
-from ..SHRMACE_Data import SHRMACEResult
+import pythoncom
 from ..SHRMACE_ErrorBase import SHRMACEException
 
-def get_cpu_id() -> None:
+def get_cpu_id(var) -> None:
     try:
+        pythoncom.CoInitialize()
         c = wmi.WMI()
         cpuid : str = ''
         for cpu in c.Win32_Processor():
             cpuid += cpu.ProcessorId.strip() + ' '
-        SHRMACEResult['CPUID'] = copy.deepcopy(cpuid.strip().upper())
-    except:
-        raise SHRMACEException('SHRMACEException [ERROR.2003] unable to get CPU id.')
+        var.SHRMACEResult['CPUID'] = copy.deepcopy(cpuid.strip().upper())
+    except Exception as e:
+        raise SHRMACEException(f'SHRMACEException [ERROR.2003] unable to get CPU id. | {str(e)}')
+    finally:
+        pythoncom.CoUninitialize()
