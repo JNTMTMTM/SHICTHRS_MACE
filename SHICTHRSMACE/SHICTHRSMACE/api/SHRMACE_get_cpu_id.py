@@ -13,6 +13,6 @@ def get_cpu_id(var) -> None:
             cpuid += cpu.ProcessorId.strip() + ' '
         var.SHRMACEResult['CPUID'] = copy.deepcopy(cpuid.strip().upper())
     except Exception as e:
-        raise SHRMACEException(f'SHRMACEException [ERROR.2003] unable to get CPU id. | {str(e)}')
+        raise SHRMACEException(f'SHRMACE [ERROR.2003] unable to get CPU id. | {str(e)}')
     finally:
         pythoncom.CoUninitialize()

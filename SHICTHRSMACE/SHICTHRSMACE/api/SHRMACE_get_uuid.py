@@ -11,6 +11,6 @@ def get_uuid(var) -> None:
         for system in c.Win32_ComputerSystemProduct():
             var.SHRMACEResult['WindowsUUID'] = copy.deepcopy(system.UUID)
     except Exception as e:
-        raise SHRMACEException(f'SHRMACEException [ERROR.2000] unable to get uuid. | {str(e)}')
+        raise SHRMACEException(f'SHRMACE [ERROR.2000] unable to get uuid. | {str(e)}')
     finally:
         pythoncom.CoUninitialize()

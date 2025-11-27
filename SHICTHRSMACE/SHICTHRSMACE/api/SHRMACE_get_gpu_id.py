@@ -11,4 +11,4 @@ def get_gpu_id(var) -> None:
             device_id = lines[-1]
             var.SHRMACEResult['GPUID'] = copy.deepcopy(device_id)
     except Exception as e:
-        raise SHRMACEException(f'SHRMACEException [ERROR.2008] unable to get GPU id. | {str(e)}')
+        raise SHRMACEException(f'SHRMACE [ERROR.2008] unable to get GPU id. | {str(e)}')

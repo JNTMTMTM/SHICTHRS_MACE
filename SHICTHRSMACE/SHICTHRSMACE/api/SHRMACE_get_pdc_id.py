@@ -12,4 +12,4 @@ def get_pdc_id(var) -> None:
         winreg.CloseKey(key)
         var.SHRMACEResult['WindowsProductId'] = copy.deepcopy(value)
     except Exception as e:
-        raise SHRMACEException(f'SHRMACEException [ERROR.2001] unable to get WindowsProductID. | {str(e)}')
+        raise SHRMACEException(f'SHRMACE [ERROR.2001] unable to get WindowsProductID. | {str(e)}')

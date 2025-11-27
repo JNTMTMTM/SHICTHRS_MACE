@@ -46,5 +46,5 @@ def SHRMACE_mace_info_dispatcher() -> dict:
         return var.SHRMACEResult
 
     except Exception as e:
-        raise SHRMACEException(f'SHRMACEException [ERROR.2013] error occurred while getting creating threads pool. | {e}')
+        raise SHRMACEException(f'SHRMACE [ERROR.2013] error occurred while getting creating threads pool. | {e}')
     

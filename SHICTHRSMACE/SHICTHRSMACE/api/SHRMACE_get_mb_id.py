@@ -13,6 +13,6 @@ def get_mb_id(var) -> None:
             MB_ID += board_id.SerialNumber + ' '
         var.SHRMACEResult['MotherBoardID'] = copy.deepcopy(MB_ID.strip().upper())
     except Exception as e:
-        raise SHRMACEException(f'SHRMACEException [ERROR.2006] unable to get MotherBoard id. | {str(e)}')
+        raise SHRMACEException(f'SHRMACE [ERROR.2006] unable to get MotherBoard id. | {str(e)}')
     finally:
         pythoncom.CoUninitialize()

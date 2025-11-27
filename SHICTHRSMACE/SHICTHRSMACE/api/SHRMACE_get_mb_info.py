@@ -13,6 +13,6 @@ def get_mb_info(var) -> None:
             MB_INFO = board.Manufacturer + board.Product
         var.SHRMACEResult['MotherBoardINFO'] = copy.deepcopy(MB_INFO)
     except Exception as e:
-        raise SHRMACEException(f'SHRMACEException [ERROR.2005] unable to get MotherBoard info. | {str(e)}')
+        raise SHRMACEException(f'SHRMACE [ERROR.2005] unable to get MotherBoard info. | {str(e)}')
     finally:
         pythoncom.CoUninitialize()

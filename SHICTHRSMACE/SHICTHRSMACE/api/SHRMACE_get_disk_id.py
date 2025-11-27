@@ -13,6 +13,6 @@ def get_disk_id(var) -> None:
             Disk_ID += physical_disk.SerialNumber + ' '
         var.SHRMACEResult['DiskID'] = copy.deepcopy(Disk_ID.strip().upper())
     except Exception as e:
-        raise SHRMACEException(f'SHRMACEException [ERROR.2010] unable to get disk id. | {str(e)}')
+        raise SHRMACEException(f'SHRMACE [ERROR.2010] unable to get disk id. | {str(e)}')
     finally:
         pythoncom.CoUninitialize()
