@@ -17,14 +17,14 @@ def get_system_info(var) -> None:
                             'platform' : system_type}
         var.SHRMACEResult['WindowsSystemInfo'] = copy.deepcopy(result)
     except Exception as e:
-        raise SHRMACEException(f'SHRMACE [ERROR.2014] unable to system info | {str(e)}')
+        raise SHRMACEException(f'SHRMACE [ERROR.2015] unable to system info | {str(e)}')
 
 
 def get_win_platform() -> str:
     version = platform.version().split('.')
 
     if len(version) < 3:
-        raise SHRMACEException(f'SHRMACE [ERROR.2014.0] windows version is not supported')
+        raise SHRMACEException(f'SHRMACE [ERROR.2015.0] windows version is not supported')
     
     major = int(version[0])
     minor = int(version[1])
@@ -37,5 +37,5 @@ def get_win_platform() -> str:
         elif build >= 10240:
             return "windows 10"
     else:
-        raise SHRMACEException(f'SHRMACE [ERROR.2014.1] windows version only support 10.0.22000 and above')
+        raise SHRMACEException(f'SHRMACE [ERROR.2015.1] windows version only support 10.0.22000 and above')
 

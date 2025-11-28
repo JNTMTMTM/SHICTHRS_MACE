@@ -10,6 +10,7 @@ from colorama import init
 init()
 from .SHRMACE_ErrorBase import SHRMACEException
 from .utils.SHRMACE_dispatcher import SHRMACE_mace_info_dispatcher
+from .api.SHRMACE_get_system_info import get_win_platform
 
 print('\033[1mWelcome to use SHRMACE - machine identity system\033[0m\n|  \033[1;34mGithub : https://github.com/JNTMTMTM/SHICTHRS_MACE\033[0m')
 print('|  \033[1mAlgorithms = rule ; Questioning = approval\033[0m')
@@ -30,3 +31,9 @@ def SHRMACE_get_mace_info() -> tuple:
 
     except SHRMACEException as e:
         raise SHRMACEException(f'SHRMACE [ERROR.2014] error occurred while getting mace info. | {e}')
+    
+def SHRMACE_get_system_type() -> str:
+    try:
+        return get_win_platform()
+    except SHRMACEException as e:
+        raise SHRMACEException(f'SHRMACE [ERROR.2015] error occurred while getting mace info. | {e}')
