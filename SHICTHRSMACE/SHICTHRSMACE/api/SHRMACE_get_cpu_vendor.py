@@ -15,6 +15,6 @@ def get_cpu_vendor(var) -> None:
             elif 'amd' in manufacturer or 'amd' in name:
                 var.SHRMACEResult['CPUVendor'] = 'amd'
     except Exception as e:
-        raise SHRMACEException(f'SHRMACE [ERROR.2004] unable to get CPU vendor. | {str(e)}')
+        raise SHRMACEException(f'SHRMACE [ERROR.2004] unable to get CPU vendor. | {''.join(e.args)}')
     finally:
         pythoncom.CoUninitialize()

@@ -32,4 +32,4 @@ def get_mem_info(var) -> None:
         var.SHRMACEResult['MemeroyINFO'] = copy.deepcopy(modules)
 
     except Exception as e:
-        raise SHRMACEException(f'SHRMACE [ERROR.2011] unable to get memory info. | {str(e)}')
+        raise SHRMACEException(f'SHRMACE [ERROR.2011] unable to get memory info. | {''.join(e.args)}')

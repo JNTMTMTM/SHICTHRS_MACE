@@ -27,7 +27,7 @@ def SHRMACE_mace_info_dispatcher() -> dict:
         try:
             func(var)
         except Exception as e:
-            print(''.join(e.args()))
+            print(''.join(e.args))
 
     try:
         var = SHRMACEData()
@@ -46,6 +46,6 @@ def SHRMACE_mace_info_dispatcher() -> dict:
         
         return var.SHRMACEResult
 
-    except Exception as e:
-        raise SHRMACEException(f'SHRMACE [ERROR.2013] error occurred while getting creating threads pool. | {e}')
+    except SHRMACEException as e:
+        raise SHRMACEException(f'SHRMACE [ERROR.2013] error occurred while getting creating threads pool. | {''.join(e.args)}')
     

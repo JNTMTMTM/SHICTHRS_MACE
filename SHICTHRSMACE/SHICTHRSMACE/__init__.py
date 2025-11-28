@@ -22,18 +22,15 @@ def SHRMACE_get_mace_info() -> tuple:
     try:
         errro_list : list = []
         result : dict = SHRMACE_mace_info_dispatcher()
-
         for MACE_item in result.keys():
             if not result[MACE_item]:
                 errro_list.append(MACE_item)
-
         return (result , errro_list)
-
     except SHRMACEException as e:
-        raise SHRMACEException(f'SHRMACE [ERROR.2014] error occurred while getting mace info. | {e}')
+        raise SHRMACEException(f'SHRMACE [ERROR.2014] error occurred while getting mace info. | {''.join(e.args)}')
     
 def SHRMACE_get_system_type() -> str:
     try:
         return get_win_platform()
     except SHRMACEException as e:
-        raise SHRMACEException(f'SHRMACE [ERROR.2015] error occurred while getting mace info. | {e}')
+        raise SHRMACEException(f'SHRMACE [ERROR.2015] unable to system info. | {''.join(e.args)}')

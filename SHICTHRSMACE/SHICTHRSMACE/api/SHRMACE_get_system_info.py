@@ -17,7 +17,7 @@ def get_system_info(var) -> None:
                             'platform' : system_type}
         var.SHRMACEResult['WindowsSystemInfo'] = copy.deepcopy(result)
     except Exception as e:
-        raise SHRMACEException(f'SHRMACE [ERROR.2015] unable to system info | {str(e)}')
+        raise SHRMACEException(f'SHRMACE [ERROR.2015] unable to system info | {''.join(e.args)}')
 
 
 def get_win_platform() -> str:
